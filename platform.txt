@@ -203,14 +203,14 @@ tools.stm32flash.upload.pattern="{path}/{cmd}" {upload.altID} {upload.usbID} "{b
 
 # OpenOCD upload
 tools.openocd.path.windows={runtime.tools.openocd.path}
-tools.openocd.path.macosx={runtime.tools.openocd.path}/macosx
-tools.openocd.path.linux={runtime.tools.openocd.path}/linux
+tools.openocd.path.macosx={runtime.tools.openocd.path}
+tools.openocd.path.linux={runtime.tools.openocd.path}
+tools.openocd.cmd.windows=bin/openocd.exe
 tools.openocd.cmd.macosx=bin/openocd
 tools.openocd.cmd.linux=bin/openocd
-tools.openocd.cmd.windows=bin/openocd.exe
 tools.openocd.upload.params.verbose=-d2
 tools.openocd.upload.params.quiet=-d0
-tools.openocd.upload.pattern="{path}/{cmd}" -f "{path}/scripts/interface/cmsis-dap.cfg" -c 'transport select swd' -f "{path}/scripts/target/stm32f4x.cfg" -c "program {{{build.path}/{build.project_name}.bin}} verify reset 0x08000000; shutdown"
+tools.openocd.upload.pattern="{path}/{cmd}" -f "{path}/share/openocd/scripts/interface/cmsis-dap.cfg" -c 'transport select swd' -f "{path}/share/openocd/scripts/target/stm32f4x.cfg" -c "program {{build.path}/{build.project_name}.bin} verify reset 0x08000000; shutdown"
 
 # GDB (Debugger)
 # ---------------------
