@@ -189,28 +189,21 @@ tools.maple_upload.upload.pattern="{path}/{cmd}" {serial.port.file} {upload.altI
 
 # stm32flash
 tools.stm32flash.cmd=stm32flash
-tools.stm32flash.cmd.windows=dfu_upload.bat
-tools.stm32flash.cmd.macosx=dfu_upload
-tools.stm32flash.cmd.linux=dfu_upload
-tools.stm32flash.cmd.linux64=dfu_upload
-tools.stm32flash.path.windows={runtime.tools.stm32_dfu_upload_tool.path}/win
-tools.stm32flash.path.macosx={runtime.tools.stm32_dfu_upload_tool.path}/macosx
-tools.stm32flash.path.linux={runtime.tools.stm32_dfu_upload_tool.path}/linux
-tools.stm32flash.path.linux64={runtime.tools.stm32_dfu_upload_tool.path}/linux64
+tools.stm32flash.cmd.windows={runtime.tools.stm32_dfu_upload_tool-1.0.0.path}/win/dfu_upload.bat
+tools.stm32flash.cmd.macosx={runtime.tools.stm32_dfu_upload_tool-1.0.0.path}/macosx/dfu_upload
+tools.stm32flash.cmd.linux={runtime.tools.stm32_dfu_upload_tool-1.0.0.path}/linux/dfu_upload
+tools.stm32flash.cmd.linux64={runtime.tools.stm32_dfu_upload_tool-1.0.0.path}/linux64/dfu_upload
 tools.stm32flash.upload.params.verbose=-d
 tools.stm32flash.upload.params.quiet=
-tools.stm32flash.upload.pattern="{path}/{cmd}" {upload.altID} {upload.usbID} "{build.path}/{build.project_name}.bin" {upload.dfuse_addr}
+tools.stm32flash.upload.pattern="{cmd}" {upload.altID} {upload.usbID} "{build.path}/{build.project_name}.bin" {upload.dfuse_addr}
 
 # OpenOCD upload
-tools.openocd.path.windows={runtime.tools.openocd.path}
-tools.openocd.path.macosx={runtime.tools.openocd.path}
-tools.openocd.path.linux={runtime.tools.openocd.path}
-tools.openocd.cmd.windows=bin/openocd.exe
-tools.openocd.cmd.macosx=bin/openocd
-tools.openocd.cmd.linux=bin/openocd
+tools.openocd.cmd.windows={runtime.tools.openocd-0.10.0-arduino13.path}/bin/openocd.exe
+tools.openocd.cmd.macosx={runtime.tools.openocd-0.10.0-arduino13.path}/bin/openocd
+tools.openocd.cmd.linux={runtime.tools.openocd-0.10.0-arduino13.path}/bin/openocd
 tools.openocd.upload.params.verbose=-d2
 tools.openocd.upload.params.quiet=-d0
-tools.openocd.upload.pattern="{path}/{cmd}" -f "{path}/share/openocd/scripts/interface/cmsis-dap.cfg" -c 'transport select swd' -f "{path}/share/openocd/scripts/target/stm32f4x.cfg" -c "program {{build.path}/{build.project_name}.bin} verify reset 0x08000000; shutdown"
+tools.openocd.upload.pattern="{cmd}" -f "interface/cmsis-dap.cfg" -c 'transport select swd' -f "target/stm32f4x.cfg" -c "program {{build.path}/{build.project_name}.bin} verify reset 0x08000000; shutdown"
 
 # GDB (Debugger)
 # ---------------------
